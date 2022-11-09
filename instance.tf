@@ -14,5 +14,8 @@ resource "aws_instance" "example" {
   tags = {
     Name = "web"
   }
+    provisioner "local-exec" {
+    command = "echo ansible_host=${aws_instance.example.private_ip} ansible_user=ubuntu  ansible_connection=ssh  ansible_become=yes >> hosts"
+  }
 }
 
