@@ -18,12 +18,9 @@ resource "aws_instance" "web-server-for-app01" {
   
   # Creating the HOST file for Ansible
   provisioner "local-exec" {
-    command = "echo ansible_host=${aws_instance.web-server-for-app01.private_ip} ansible_user=ubuntu  ansible_connection=ssh  ansible_become=yes >> hosts"
+    command = "echo web1 ansible_host=${aws_instance.web-server-for-app01.private_ip} >> hosts"
   }
-  # Creating the HOST file for Ansible / line #2
-  provisioner "local-exec" {
-    command = "echo ansible_host=${aws_instance.web-server-for-app01.private_ip} ansible_user=ubuntu  ansible_connection=ssh  ansible_become=yes >> hosts"
-  }
+
   
 }
 
