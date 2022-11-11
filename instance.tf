@@ -13,7 +13,7 @@ resource "aws_instance" "web-server-for-app01" {
   
   # the server name in AWS
   tags = {
-    Name = "web-app01"
+    Name = "andrey-web-app01"
   }
   
   # Creating the HOST file for Ansible
