@@ -6,7 +6,7 @@ variable "AMIS" {
   type = map(string)
   default = {
 
-    eu-west-1 = "ami-06148e0e81e5187c8"
+    eu-central-1 = "ami-06148e0e81e5187c8"
   }
 }
 
