@@ -1,0 +1,17 @@
+#Ansible remote control
+ansible ansible_host=127.0.0.1 ansible_connection=local
+
+
+[web_servers]
+web1
+
+[web_servers:vars]
+ansible_connection=ssh
+ansible_user=ec2-user
+ansible_become=yes
+
+[all:children]
+web_servers
+ansible
+
+# Web servers
