@@ -1,6 +1,6 @@
-resource "aws_security_group" "allow-ssh" {
-  vpc_id      = "vpc-08eb245b976a83690"
-  name        = "allow-ssh"
+resource "aws_security_group" "andrey-allow-ssh" {
+  vpc_id      = "vpc-05542a78d6f38bb4d"
+  name        = "andrey-allow-ssh"
   description = "security group that allows ssh and all egress traffic"
   egress {
     from_port   = 0
@@ -16,7 +16,7 @@ resource "aws_security_group" "allow-ssh" {
     cidr_blocks = ["0.0.0.0/0"]
   }
   tags = {
-    Name = "allow-ssh"
+    Name = "andrey-allow-ssh"
   }
 }
 
