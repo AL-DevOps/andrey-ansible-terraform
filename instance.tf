@@ -6,7 +6,7 @@ resource "aws_instance" "web-server-for-app01" {
   subnet_id = "subnet-0fee2d1c9e08f1996"
 
   # the security group
-  vpc_security_group_ids = "sg-04f2d5d1786a702f1"
+  vpc_security_group_ids = ["sg-04f2d5d1786a702f1"]
 
   # the public SSH key
   key_name = "andrey-key-frankfurt"
