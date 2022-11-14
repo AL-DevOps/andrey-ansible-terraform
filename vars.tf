@@ -9,4 +9,3 @@ variable "AMIS" {
     eu-central-1 = "ami-06148e0e81e5187c8"
   }
 }
-
