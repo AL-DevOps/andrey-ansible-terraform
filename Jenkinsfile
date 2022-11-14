@@ -1,19 +1,22 @@
-node('ansible') {
+node('Terraform-Ansible') {
+    stage('Checkout') { 
+        checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'GitHub-user-password', url: 'https://github.com/AL-DevOps/andrey-ansible-terraform.git']]])
+    }
     
-    stage('Preparation') { // for display purposes
-        // Get some code from a GitHub repository
-        checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'github', url: 'https://github.com/lidorg-dev/andrey-ansible.git']]])
- 
+    stage('Terraform destroy') {
+        sh '''terraform init
+        terraform destroy --auto-approve'''
     }
-    stage('Build EC2 in AWS') {
-  
-        sh ''' terraform init
-            terraform apply --auto-approve
-            '''
+    
+    stage('Terraform apply') {
+        sh '''terraform init
+        terraform apply --auto-approve'''
+    }
+    stage(" execute Ansible version") {
+        sh '''ansible --version'''
+    }   
+    stage(" execute Ansible Appashe") {
+        ansiblePlaybook credentialsId: 'ansible-andrey-key-frankfurt', disableHostKeyChecking: true, installation: 'Ansible', inventory: 'host', playbook: 'playbook.yaml'
             
-        
-    }
-    stage('Run Ansible Playbook') {
-       
-    }
+    } 
 }
