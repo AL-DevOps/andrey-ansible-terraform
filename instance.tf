@@ -16,6 +16,13 @@ resource "aws_instance" "web-server-for-app09" {
     Name = "andrey-web-app09"
   }
 
+  # Creating claster_name.txt file for deployment.yaml
+   provisioner "local-exec" {
+     command = <<EOF
+       echo ${aws_instance.web-server-for-app09.private_ip}>> claster_name_from_terraform.txt
+     EOF
+  }
+
   # Creating the HOST file for Ansible
    provisioner "local-exec" {
      command = <<EOF
@@ -24,5 +31,6 @@ resource "aws_instance" "web-server-for-app09" {
        echo web1 >> hosts
      EOF
   }
+
 
 }
