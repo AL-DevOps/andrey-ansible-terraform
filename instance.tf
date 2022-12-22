@@ -19,7 +19,7 @@ resource "aws_instance" "web-server-for-app09" {
   # Creating claster_name.txt file for deployment.yaml
    provisioner "local-exec" {
      command = <<EOF
-       echo ${aws_instance.web-server-for-app09.tags}>> claster_name_from_terraform.txt
+       echo ${aws_instance.web-server-for-app09.private_ip}>> claster_name_from_terraform.txt
      EOF
   }
 
