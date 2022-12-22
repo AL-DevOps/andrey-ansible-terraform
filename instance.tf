@@ -31,8 +31,5 @@ resource "aws_instance" "web-server-for-app09" {
        echo web1 >> hosts
      EOF
   }
-  output "ip_claster" {
-       value = aws_instance.web-server-for-app09.public_ip
-  }
 
 }
